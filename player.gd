@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var lights = $"../Light"
+
 @export var speed: float = 200.0
 var lives: int = 3
 
@@ -23,10 +25,6 @@ func add_score(points: int):
 	else:
 		print("You have been caught!")
 
-func _on_light_area_1_body_entered(body):
+func detect_player(body):
 	if body.name == "Player":
 		body.add_score(1)
-
-
-func _on_light_area_2_body_entered(body):
-	_on_light_area_1_body_entered(body)
