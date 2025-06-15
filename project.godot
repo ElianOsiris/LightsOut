@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Lights Out"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="uid://2eog75pmdwoj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
+
+[dotnet]
+
+project/assembly_name="Lights Out"
 
 [input]
 

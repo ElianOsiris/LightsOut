@@ -17,6 +17,15 @@ func _physics_process(delta):
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x-40)
 	position.y = clamp(position.y, 0, screen_size.y-40)
+	var player_areaa: Area2D = find_child("Area")
+
+	# Bomb logic
+	if Input.is_mouse_button_pressed(1):
+		var player_area: Area2D = find_child("Area")
+		for  area in player_area.get_overlapping_areas():
+			if area.get_parent().name == "Bomb":
+				area.position = Vector2(position.x - 60.0, transform.origin.y - 20)
+
 
 func add_score(points: int):
 	lives -= points

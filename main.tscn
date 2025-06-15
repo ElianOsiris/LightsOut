@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://2eog75pmdwoj"]
+[gd_scene load_steps=6 format=3 uid="uid://2eog75pmdwoj"]
 
 [ext_resource type="Script" uid="uid://bgd56uwr3dyk5" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bji5f7oc0u6em" path="res://light.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cfktiv4p7gej0" path="res://items/bomb.tscn" id="3_h2yge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(40, 40)
@@ -23,7 +24,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.258571, 0.354361, 0.843396, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="Area" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area"]
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_0xm2m")
 
@@ -42,4 +45,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.725393, 0.727151, 0, 1)
 
+[node name="Bomb" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(78, 36)
+
+[connection signal="input_event" from="Player" to="Player" method="_on_input_event"]
 [connection signal="body_entered" from="Light" to="Player" method="_on_light_body_entered"]
