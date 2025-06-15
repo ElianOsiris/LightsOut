@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfktiv4p7gej0"]
+
+[ext_resource type="Texture2D" uid="uid://ctf6quicgtyly" path="res://assets/bomb.png" id="1_amjlg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lnnoo"]
+
+[node name="Bomb" type="Node2D"]
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_lnnoo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area"]
+position = Vector2(0, -0.695)
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("1_amjlg")
