@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7836ie51rkl0"]
+
+[ext_resource type="Script" uid="uid://docvhb8y4p2fs" path="res://BombCheckpoint.gd" id="1_2y4hx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnug8"]
+size = Vector2(40, 40)
+
+[node name="BombCheckpoint" type="Node2D"]
+script = ExtResource("1_2y4hx")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_fnug8")
+
+[node name="ColorRect" type="ColorRect" parent="Area"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.569767, 1, 0.480726, 1)

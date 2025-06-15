@@ -5,6 +5,8 @@ extends CharacterBody2D
 
 @export var speed: float = 200.0
 var lives: int = 3
+var is_carry: bool = false
+var carry_item: Node2D
 
 func _physics_process(delta):
 	var input_vector = Vector2(
@@ -20,8 +22,15 @@ func _physics_process(delta):
 	
 	if Input.is_mouse_button_pressed(1):
 		for area in player_area.get_overlapping_areas():
-			if area.get_parent().name == "Bomb":
-				area.position = Vector2(position.x, position.y)
+			var parent = area.get_parent()
+			if parent.name == "Bomb":
+				if not is_carry:
+					carry_item = area
+					is_carry = true
+				parent.position = Vector2(position.x, position.y)
+	else:
+		if is_carry:
+			drop_bomb()
 
 func add_score(points: int):
 	lives -= points
@@ -29,6 +38,15 @@ func add_score(points: int):
 		print("Lives: ", lives)
 	else:
 		print("You have been caught!")
+
+func drop_bomb():
+	if is_instance_valid(carry_item):
+		for area in player_area.get_overlapping_areas():
+			if area.get_parent() is BombCheckpoint:
+				var bomb_checkpoint: BombCheckpoint = area.get_parent()
+				if not bomb_checkpoint.already_used:
+					bomb_checkpoint.handle_bomb(carry_item)
+
 
 func detect_player(body):
 	if body.name == "Player":
