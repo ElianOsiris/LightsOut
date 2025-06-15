@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@onready var lights = $"../Light"
+@onready var lights: Node2D = $"../Light"
+@onready var player_area: Area2D = $PlayerGrabArea
 
 @export var speed: float = 200.0
 var lives: int = 3
@@ -12,20 +13,15 @@ func _physics_process(delta):
 	).normalized()
 	velocity = input_vector * speed
 	move_and_slide()
-	
 	# Clamp to screen bounds
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x-40)
 	position.y = clamp(position.y, 0, screen_size.y-40)
-	var player_areaa: Area2D = find_child("Area")
-
-	# Bomb logic
+	
 	if Input.is_mouse_button_pressed(1):
-		var player_area: Area2D = find_child("Area")
-		for  area in player_area.get_overlapping_areas():
+		for area in player_area.get_overlapping_areas():
 			if area.get_parent().name == "Bomb":
-				area.position = Vector2(position.x - 60.0, transform.origin.y - 20)
-
+				area.position = Vector2(position.x, position.y)
 
 func add_score(points: int):
 	lives -= points
