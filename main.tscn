@@ -1,52 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://2eog75pmdwoj"]
+[gd_scene load_steps=7 format=3 uid="uid://2eog75pmdwoj"]
 
-[ext_resource type="Script" uid="uid://bgd56uwr3dyk5" path="res://player.gd" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://bji5f7oc0u6em" path="res://light.gd" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cfktiv4p7gej0" path="res://items/bomb.tscn" id="3_h2yge"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(40, 40)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(28.2188, 19.2949)
+[ext_resource type="PackedScene" uid="uid://ur44wroxfk7u" path="res://player.tscn" id="1_7mycd"]
+[ext_resource type="PackedScene" uid="uid://5nhl44i6t75q" path="res://light.tscn" id="2_272bh"]
+[ext_resource type="Script" uid="uid://bmtwbmhbjuvpo" path="res://lights.gd" id="3_5vw27"]
+[ext_resource type="PackedScene" uid="uid://c7urxr4nlp4w5" path="res://lights_swap.tscn" id="4_kek77"]
+[ext_resource type="PackedScene" uid="uid://ceg5f06iaowqs" path="res://walls.tscn" id="5_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bls3qyxua5dop" path="res://bomb.tscn" id="6_efxa6"]
 
 [node name="Main" type="Node"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-motion_mode = 1
-script = ExtResource("1_ig7tw")
-speed = 400.0
+[node name="Player" parent="." instance=ExtResource("1_7mycd")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-
-[node name="ColorRect" type="ColorRect" parent="Player/Sprite2D"]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.258571, 0.354361, 0.843396, 1)
-
-[node name="Area" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area"]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_0xm2m")
-
-[node name="Light" type="Area2D" parent="."]
+[node name="Light" parent="." instance=ExtResource("2_272bh")]
 position = Vector2(548, 294)
-scale = Vector2(2, 2)
-script = ExtResource("2_0xm2m")
+script = ExtResource("3_5vw27")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Light"]
-position = Vector2(19.9598, 19.8068)
-scale = Vector2(1.41297, 2.04797)
-shape = SubResource("RectangleShape2D_h2yge")
+[node name="ColorRect" parent="Light/LightArea1" index="0"]
+color = Color(0.9, 0.9, 0.9, 1)
 
-[node name="ColorRect" type="ColorRect" parent="Light"]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.725393, 0.727151, 0, 1)
+[node name="ColorRect" parent="Light/LightArea2" index="0"]
+color = Color(0.1, 0.1, 0.1, 1)
 
-[node name="Bomb" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(78, 36)
+[node name="LightSwitch" parent="." instance=ExtResource("4_kek77")]
 
-[connection signal="input_event" from="Player" to="Player" method="_on_input_event"]
-[connection signal="body_entered" from="Light" to="Player" method="_on_light_body_entered"]
+[node name="Walls" parent="." instance=ExtResource("5_4c57u")]
+
+[node name="Bomb" parent="." instance=ExtResource("6_efxa6")]
+
+[connection signal="body_entered" from="Light/LightArea1" to="Light/LightArea1" method="_on_body_entered"]
+[connection signal="body_entered" from="Light/LightArea2" to="Light/LightArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="LightSwitch/LightSwitchArea" to="LightSwitch" method="_on_light_switch_area_body_entered"]
+
+[editable path="Player"]
+[editable path="Light"]
+[editable path="LightSwitch"]
+[editable path="Walls"]
+[editable path="Bomb"]

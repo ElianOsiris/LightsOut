@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceg5f06iaowqs"]
+
+[ext_resource type="Script" uid="uid://dpdtrof2gxiel" path="res://wall_polygons_test.gd" id="1_yax5h"]
+
+[node name="Walls" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("1_yax5h")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(140, 533, 262, 419, 446, 504, 404, 546)
+uv = PackedVector2Array(140, 533, 262, 419, 446, 504, 404, 546)

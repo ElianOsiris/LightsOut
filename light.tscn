@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://5nhl44i6t75q"]
+
+[ext_resource type="Script" uid="uid://bji5f7oc0u6em" path="res://light.gd" id="1_hdgcg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(28.2188, 19.2949)
+
+[node name="Lights" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="LightArea1" type="Area2D" parent="." groups=["Lights1"]]
+script = ExtResource("1_hdgcg")
+
+[node name="ColorRect" type="ColorRect" parent="LightArea1"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.725393, 0.727151, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightArea1"]
+position = Vector2(19.9598, 19.8068)
+scale = Vector2(1.41297, 2.04797)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="LightArea2" type="Area2D" parent="." groups=["Lights2"]]
+position = Vector2(200, 0)
+script = ExtResource("1_hdgcg")
+
+[node name="ColorRect" type="ColorRect" parent="LightArea2"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.725393, 0.727151, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightArea2"]
+position = Vector2(19.9598, 19.8068)
+scale = Vector2(1.41297, 2.04797)
+shape = SubResource("RectangleShape2D_h2yge")
