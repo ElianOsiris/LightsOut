@@ -31,6 +31,8 @@ color = Color(0.1, 0.1, 0.1, 1)
 [node name="BombCheckpoint" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(100, 0)
 
+[node name="Test" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="Light/LightArea1" to="Light/LightArea1" method="_on_body_entered"]
 [connection signal="body_entered" from="Light/LightArea2" to="Light/LightArea2" method="_on_body_entered"]
 [connection signal="body_entered" from="LightSwitch/LightSwitchArea" to="LightSwitch" method="_on_light_switch_area_body_entered"]
