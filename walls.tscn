@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ceg5f06iaowqs"]
 
-[ext_resource type="Script" uid="uid://dpdtrof2gxiel" path="res://wall_polygons_test.gd" id="1_yax5h"]
+[ext_resource type="Script" uid="uid://dpdtrof2gxiel" path="res://scripts/wall_polygons_test.gd" id="1_yax5h"]
 
 [node name="Walls" type="Node2D"]
 
