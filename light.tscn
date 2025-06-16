@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://5nhl44i6t75q"]
+[gd_scene load_steps=6 format=3 uid="uid://bw638kaxldabn"]
 
-[ext_resource type="Script" uid="uid://bji5f7oc0u6em" path="res://scripts/light.gd" id="1_hdgcg"]
-[ext_resource type="Script" uid="uid://bmtwbmhbjuvpo" path="res://scripts/lights.gd" id="1_we4ua"]
+[ext_resource type="Script" uid="uid://bji5f7oc0u6em" path="res://light.gd" id="1_hdgcg"]
+[ext_resource type="Script" uid="uid://bmtwbmhbjuvpo" path="res://lights.gd" id="1_we4ua"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_we4ua"]
 radius = 64.0
@@ -13,8 +13,8 @@ colors = PackedColorArray(0.573684, 0.573684, 0.573684, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5qqhr"]
 gradient = SubResource("Gradient_we4ua")
-width = 512
-height = 512
+width = 128
+height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 

@@ -1,12 +1,20 @@
 extends CharacterBody2D
 
-@onready var lights: Node2D = $"../Light"
 @onready var player_area: Area2D = $PlayerGrabArea
 
 @export var speed: float = 200.0
-var lives: int = 3
-var carrying: bool = false
+var lives: int
+var carrying: bool
 var carry_item: Node2D
+
+func _ready():
+	GlobalReferences.player = self
+	restart_level()
+
+func restart_level():
+	lives = 3
+	carrying = false
+	global_position = Vector2(100, 100)
 
 func _physics_process(delta):
 	var input_vector = Vector2(
@@ -39,6 +47,7 @@ func add_score(points: int):
 		print("Lives: ", lives)
 	else:
 		print("You have been caught!")
+		restart_level()
 
 func drop_bomb():
 	if is_instance_valid(carry_item):
@@ -49,6 +58,5 @@ func drop_bomb():
 					bomb_checkpoint.handle_bomb(carry_item)
 
 
-func detect_player(body):
-	if body.name == "Player":
-		body.add_score(1)
+func on_player_caught():
+	add_score(1)

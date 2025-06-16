@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bls3qyxua5dop"]
+[gd_scene load_steps=3 format=3 uid="uid://u6oj77qalnc6"]
 
-[ext_resource type="Texture2D" uid="uid://brgbs3t86iyt" path="res://assets/bomb.png" id="1_4kkau"]
+[ext_resource type="Texture2D" uid="uid://brgbs3t86iyt" path="res://bomb.png" id="1_4kkau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpdcx"]
 size = Vector2(44, 44)
