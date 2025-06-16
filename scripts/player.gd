@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 @export var speed: float = 200.0
 var lives: int = 3
-var is_carry: bool = false
+var carrying: bool = false
 var carry_item: Node2D
 
 func _physics_process(delta):
@@ -24,13 +24,14 @@ func _physics_process(delta):
 		for area in player_area.get_overlapping_areas():
 			var parent = area.get_parent()
 			if parent.name == "Bomb":
-				if not is_carry:
+				if not carrying:
 					carry_item = area
-					is_carry = true
+					carrying = true
 				parent.position = Vector2(position.x, position.y)
 	else:
-		if is_carry:
+		if carrying:
 			drop_bomb()
+			carrying = false
 
 func add_score(points: int):
 	lives -= points
