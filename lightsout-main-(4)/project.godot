@@ -13,13 +13,12 @@ config_version=5
 config/name="Lights Out"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Utils="*res://global_utilities.gd"
-GlobalReferences="*res://global_references.gd"
-SignalBus="*res://signal_bus.gd"
+Utils="*res://scripts/global_utilities.gd"
+GlobalReferences="*res://scripts/global_references.gd"
 
 [input]
 

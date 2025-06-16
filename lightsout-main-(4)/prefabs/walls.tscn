@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://blja5f2qagpsi"]
+
+[ext_resource type="Script" uid="uid://laky8eap3bct" path="res://scripts/static_wall.gd" id="1_xxkwp"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xxkwp"]
+
+[node name="Wall" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("1_xxkwp")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+color = Color(0.456542, 0.5703, 0.839488, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D"]
+occluder = SubResource("OccluderPolygon2D_xxkwp")
