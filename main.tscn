@@ -1,12 +1,103 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwadogcrq5yla"]
+[gd_scene load_steps=7 format=3 uid="uid://2eog75pmdwoj"]
 
-[ext_resource type="Script" uid="uid://1s5d63nbhfpf" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://ur44wroxfk7u" path="res://player.tscn" id="1_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dcq1na13r3j0n" path="res://prefabs/backgrounds.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://ceg5f06iaowqs" path="res://prefabs/stuff.tscn" id="5_4c57u"]
+[ext_resource type="PackedScene" uid="uid://blja5f2qagpsi" path="res://walls.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bh82rs5fckamc" path="res://spotlight.tscn" id="5_272bh"]
+[ext_resource type="Script" uid="uid://pofy1l3up7ku" path="res://walls_folder.gd" id="8_kek77"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_ig7tw")
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Player" parent="." instance=ExtResource("1_7mycd")]
+
+[node name="Backgrounds" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="Stuff" parent="." instance=ExtResource("5_4c57u")]
+
+[node name="Wall" parent="Stuff/Walls" index="0" instance=ExtResource("5_7mycd")]
+
+[node name="StaticBody2D" parent="Stuff/Walls/Wall" index="0"]
+position = Vector2(300, 400)
+
+[node name="Polygon2D" parent="Stuff/Walls/Wall/StaticBody2D" index="0"]
+polygon = PackedVector2Array(-334, -121, 74, -113.516, 70.8, 95.6, -332, 103)
+
+[node name="Wall6" parent="Stuff/Walls" index="1" instance=ExtResource("5_7mycd")]
+
+[node name="StaticBody2D" parent="Stuff/Walls/Wall6" index="0"]
+position = Vector2(300, 400)
+
+[node name="Polygon2D" parent="Stuff/Walls/Wall6/StaticBody2D" index="0"]
+polygon = PackedVector2Array(750, -293, 899, -306, 920, -71, 746, -83)
+
+[node name="Wall5" parent="Stuff/Walls" index="2" instance=ExtResource("5_7mycd")]
+
+[node name="StaticBody2D" parent="Stuff/Walls/Wall5" index="0"]
+position = Vector2(300, 200)
+
+[node name="Polygon2D" parent="Stuff/Walls/Wall5/StaticBody2D" index="0"]
+polygon = PackedVector2Array(-81, -213, 246.273, -212.459, 243.235, -27.1415, -84.5926, -28.5558)
+
+[node name="Wall7" parent="Stuff/Walls" index="3" instance=ExtResource("5_7mycd")]
+
+[node name="StaticBody2D" parent="Stuff/Walls/Wall7" index="0"]
+position = Vector2(700, 200)
+
+[node name="Polygon2D" parent="Stuff/Walls/Wall7/StaticBody2D" index="0"]
+polygon = PackedVector2Array(-81, -213, 246.273, -212.459, 243.235, -27.1415, -84.5926, -28.5558)
+
+[node name="Wall8" parent="Stuff/Walls" index="4" instance=ExtResource("5_7mycd")]
+
+[node name="StaticBody2D" parent="Stuff/Walls/Wall8" index="0"]
+position = Vector2(700, 200)
+
+[node name="Polygon2D" parent="Stuff/Walls/Wall8/StaticBody2D" index="0"]
+polygon = PackedVector2Array(-232.429, -212.175, 246.273, -212.459, 243.767, -176.743, -233.846, -173.909)
+
+[node name="Wall4" parent="Stuff/Walls" index="5" instance=ExtResource("5_7mycd")]
+
+[node name="StaticBody2D" parent="Stuff/Walls/Wall4" index="0"]
+position = Vector2(600, 400)
+
+[node name="Polygon2D" parent="Stuff/Walls/Wall4/StaticBody2D" index="0"]
+polygon = PackedVector2Array(-165, -132, 134, -131, 131, 4, -160, 1)
+
+[node name="Wall3" parent="Stuff/Walls" index="6" instance=ExtResource("5_7mycd")]
+
+[node name="StaticBody2D" parent="Stuff/Walls/Wall3" index="0"]
+position = Vector2(900, 400)
+
+[node name="Polygon2D" parent="Stuff/Walls/Wall3/StaticBody2D" index="0"]
+polygon = PackedVector2Array(-94.8, -111.916, 319, -108, 318, 86, -99.6, 94.8)
+
+[node name="Wall2" parent="Stuff/Walls" index="7" instance=ExtResource("5_7mycd")]
+
+[node name="StaticBody2D" parent="Stuff/Walls/Wall2" index="0"]
+position = Vector2(600, 480)
+scale = Vector2(2, 2)
+
+[node name="Polygon2D" parent="Stuff/Walls/Wall2/StaticBody2D" index="0"]
+polygon = PackedVector2Array(-78, -3.6, 458.8, -0.400002, 460.4, 80.4, -455.6, 76.4, -454.8, 9.2)
+uv = PackedVector2Array(-78, -3.6, 458.8, -0.400002, 460.4, 80.4, -455.6, 76.4, -454.8, 9.2)
+
+[node name="Spotlight" parent="Stuff/SoloLights" index="0" instance=ExtResource("5_272bh")]
+position = Vector2(580, 30)
+
+[node name="PointLight" parent="Stuff/SoloLights/Spotlight/Lights" index="1"]
+energy = 3.0
+
+[node name="Checkpoints" type="Node2D" parent="Stuff"]
+script = ExtResource("8_kek77")
+
+[editable path="Player"]
+[editable path="Stuff"]
+[editable path="Stuff/Walls/Wall"]
+[editable path="Stuff/Walls/Wall6"]
+[editable path="Stuff/Walls/Wall5"]
+[editable path="Stuff/Walls/Wall7"]
+[editable path="Stuff/Walls/Wall8"]
+[editable path="Stuff/Walls/Wall4"]
+[editable path="Stuff/Walls/Wall3"]
+[editable path="Stuff/Walls/Wall2"]
+[editable path="Stuff/SoloLights/Spotlight"]
