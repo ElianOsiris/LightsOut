@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var player_area: Area2D = $PlayerGrabArea
+@onready var sprite: Sprite2D = $Sprite2D
 
 @export var speed: float = 200.0
 var lives: int
@@ -23,6 +24,8 @@ func _physics_process(delta):
 	).normalized()
 	velocity = input_vector * speed
 	move_and_slide()
+	if input_vector:
+		sprite.rotation = input_vector.angle() + 1.57079637050629
 	# Clamp to screen bounds
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x-40)
