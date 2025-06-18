@@ -15,16 +15,16 @@ script = ExtResource("1_4flbx")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Sprite2D"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 color = Color(0.258571, 0.354361, 0.843396, 1)
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="PlayerGrabArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerGrabArea"]
-position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_3vyb7")
