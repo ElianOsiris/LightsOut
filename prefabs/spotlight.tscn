@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh82rs5fckamc"]
+
+[ext_resource type="Script" uid="uid://bmtwbmhbjuvpo" path="res://scripts/lights.gd" id="1_scnk2"]
+[ext_resource type="Script" uid="uid://bji5f7oc0u6em" path="res://scripts/light.gd" id="2_lfkdj"]
+
+[sub_resource type="Gradient" id="Gradient_we4ua"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.321053, 1)
+colors = PackedColorArray(0.573684, 0.573684, 0.573684, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5qqhr"]
+gradient = SubResource("Gradient_we4ua")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ovjbq"]
+polygon = PackedVector2Array(-1, 0, -1, 5, -3, 5, -3, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nb3eu"]
+polygon = PackedVector2Array(1, 0, 1, 5, 3, 5, 3, 0)
+
+[node name="Spotlight" type="Node2D"]
+
+[node name="Lights" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+script = ExtResource("1_scnk2")
+
+[node name="LightArea" type="Area2D" parent="Lights" groups=["light_areas"]]
+script = ExtResource("2_lfkdj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lights/LightArea"]
+polygon = PackedVector2Array(-0.5, 0.5, -50.5, 261.5, 61.5, 262)
+
+[node name="PointLight" type="PointLight2D" parent="Lights"]
+color = Color(0.702978, 0.760315, 7.70092e-07, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_5qqhr")
+
+[node name="SpotlightComponent" type="Node2D" parent="Lights"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lights/SpotlightComponent"]
+occluder = SubResource("OccluderPolygon2D_ovjbq")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Lights/SpotlightComponent"]
+occluder = SubResource("OccluderPolygon2D_nb3eu")
+
+[connection signal="body_entered" from="Lights/LightArea" to="Lights/LightArea" method="_on_body_entered"]

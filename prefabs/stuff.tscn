@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceg5f06iaowqs"]
+
+[ext_resource type="Script" uid="uid://pofy1l3up7ku" path="res://scripts/walls_folder.gd" id="3_7i2ur"]
+
+[sub_resource type="GDScript" id="GDScript_0h7ie"]
+script/source = "@icon(\"res://pixil-frame-3 (1).png\")
+extends Node2D
+"
+
+[node name="Stuff" type="Node2D"]
+script = SubResource("GDScript_0h7ie")
+
+[node name="Walls" type="Node2D" parent="."]
+script = ExtResource("3_7i2ur")
+
+[node name="SoloLights" type="Node2D" parent="."]
+script = ExtResource("3_7i2ur")
+
+[node name="Switches" type="Node2D" parent="."]
+script = ExtResource("3_7i2ur")

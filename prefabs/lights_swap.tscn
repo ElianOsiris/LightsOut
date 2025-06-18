@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7urxr4nlp4w5"]
+
+[ext_resource type="Script" uid="uid://bw0a0euu6dd8l" path="res://scripts/lights_swap.gd" id="1_ajf2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubodj"]
+size = Vector2(40, 40)
+
+[node name="LightSwitch" type="Node2D"]
+script = ExtResource("1_ajf2c")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.782185, 0.0316043, 0.238229, 1)
+
+[node name="LightSwitchArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightSwitchArea"]
+shape = SubResource("RectangleShape2D_ubodj")
+
+[connection signal="body_entered" from="LightSwitchArea" to="." method="_on_light_switch_area_body_entered"]
