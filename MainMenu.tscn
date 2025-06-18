@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://bohpn1nx1wp0v"]
+
+[sub_resource type="Theme" id="Theme_kjwba"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiy7p"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.183409, 0.209768, 0.618931, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.159652, 0.182708, 0.554578, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i26rj"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.259321, 0.301528, 0.796422, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.159652, 0.182708, 0.554578, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing = false
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 2
+
+[node name="TitleMargin" type="MarginContainer" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Title" type="Label" parent="MainMenu/VBoxContainer/TitleMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_kjwba")
+theme_override_font_sizes/font_size = 70
+text = "Lights Out!"
+
+[node name="MenuButtons" type="MarginContainer" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/VBoxContainer/MenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Start" type="Button" parent="MainMenu/VBoxContainer/MenuButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_eiy7p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i26rj")
+text = "Start Game"
+
+[node name="Settings" type="Button" parent="MainMenu/VBoxContainer/MenuButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_eiy7p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i26rj")
+text = "Settings
+"
+
+[node name="Exit" type="Button" parent="MainMenu/VBoxContainer/MenuButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_eiy7p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i26rj")
+text = "Exit
+"

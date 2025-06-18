@@ -13,3 +13,4 @@ func invert_light_values():
 	for light in point_lights:
 		current_energy = light.energy
 		light.energy = Utils.invert_number(current_energy, 1, 3, true)
+		print("updating file")
